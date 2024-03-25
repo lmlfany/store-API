@@ -33,12 +33,15 @@ function Scanner(){
                 <Navbar />
             </header>
             <main className='max-w-screen-xl w-1/2 items-center justify-between mx-auto p-4'>
+            <div className="flex flex-col">
             <Link to="/">
                 <a className="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline">
                 <img src="/left-arrow.svg" className="h-8" alt="Logo" />
                 Regresar
                 </a>
             </Link>
+            <strong>Escanea el código</strong>
+            </div>
             {
                 scanResult
                 ? <div>Success: <a href={scanResult}> {scanResult} </a> </div>

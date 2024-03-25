@@ -48,6 +48,7 @@ function App() {
   const { search, updateSearch, error, hasInput } = useSearch();
   const { products, loading, getProducts } = useProducts({search, sort});
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
+  const [showFilter, setShowFilter] = useState(false);
 
 
   useEffect(() => {
@@ -63,10 +64,9 @@ function App() {
     };
   }, []);;
 
-  
   useEffect(() => {
 
-    getProducts({ search: 'phone' });
+    getProducts({ search: '' });
   }, []); 
 
   const debounceGetProducts = useCallback(
@@ -91,9 +91,17 @@ function App() {
 
   const handleClearSearch = () => {
     updateSearch('');
-    setHasInput(false); 
+    hasInput(false); 
     getProducts({ search: '' }); 
-  };
+  }
+
+  const handleFilter = () => {
+    showFilter(true)
+  }
+
+  function handleFilterClose() {
+    setShowFilter(false)
+  }
 
 
   return (
@@ -106,7 +114,7 @@ function App() {
       zIndex: 9999 
       }}>
       {!isHeaderFixed && <Navbar />}
-      <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
+      <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 pt-4'>
         <form onSubmit={handleSubmit} className="w-full flex items-center justify-center">
           <label  className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
           <div className="relative w-full max-w-xl flex"> 
@@ -117,10 +125,10 @@ function App() {
                 </svg>
               </div>
               <input 
-                style={{ border: '1px solid transparent', borderColor: error ? 'red' :'transparent' }} 
+                style={{ border: '1px solid transparent', borderColor: error ? 'red' :'grey' }} 
                 onChange={handleChange} 
                 value={search}  
-                className=" block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 " 
+                className=" block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-sm bg-gray-50 focus:ring-blue-500 focus:border-blue-500 " 
                 placeholder="Buscar producto" 
               />
               {hasInput ? (
@@ -128,7 +136,7 @@ function App() {
                   onClick={handleClearSearch}
                   className='absolute w-8 h-8 place-items-center text-blue-gray-500 top-2/4 right-3 -translate-y-2/4'
                 >
-                  <img src='/x-circle-solid.svg' className='h-8' alt='Clear' />
+                  <img src='/x-circle-solid.svg' className='h-6' alt='Clear' />
                 </button>
               ):(
                 <Link to="/scanner">
@@ -139,15 +147,18 @@ function App() {
                 </Link>
               )}
             </div>
-            <button type="submit" className=" bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-white dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
+            {/* <button type="submit" className=" bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-white dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button> */}
           </div>
         </form>
-        <div className="max-w-screen-xl flex flex-wrap mx-auto p-4">
-         <div className="flex items-center mb-2">
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            <input  type="checkbox" onChange={handleSort} checked={sort} className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"  />
-            <label className="ms-2 text-sm font-medium text-gray-900 ">Filtrar por precio</label>
-          </div>
+        <div className="w-[570px] flex mx-auto flex-row-reverse justify-between content-center pt-2  ">
+          {error && <p style={{ color: 'red' }} className=' text-sm font-semibold' >{error}</p>}
+          <a onClick={handleFilter} className='underline text-sm font-medium text-blue-500'>Filtros</a>
+          {showFilter && (
+              <div className="flex flex-row justify-end items-center">
+              <input  type="checkbox" onChange={handleSort} checked={sort} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"  />
+              <label className=" text-sm font-medium text-blue-500 ">Filtros</label>
+            </div>
+          )}      
         </div>
       </div>
       {isHeaderFixed && <hr class="h-px bg-blue-400 border-0 " />}
