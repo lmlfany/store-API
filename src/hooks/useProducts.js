@@ -1,7 +1,7 @@
 import { useState, useRef, useMemo, useCallback } from 'react';
 import { searchProducts } from '../services/products.js';
 
-export function useProducts ({search, sort}){
+export function useProducts ({search, sort, sortAZ}){
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -31,5 +31,5 @@ export function useProducts ({search, sort}){
 
     }, [sort, products])
 
-    return { products: sortedProducts, getProducts, loading }
+    return { products: sortedProducts,  getProducts, loading }
 }

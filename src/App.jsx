@@ -5,6 +5,7 @@ import { useProducts } from './hooks/useProducts.js';
 import { Products } from './components/Products.jsx';
 import { useEffect, useState, useRef, useCallback } from 'react';
 import debounce from 'just-debounce-it';
+import FilterItem from './components/FilterItem.jsx';
 
 function useSearch (){
   const [search, updateSearch] = useState('');
@@ -96,7 +97,7 @@ function App() {
   }
 
   const handleFilter = () => {
-    showFilter(true)
+    setShowFilter(true)
   }
 
   function handleFilterClose() {
@@ -150,15 +151,24 @@ function App() {
             {/* <button type="submit" className=" bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-white dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button> */}
           </div>
         </form>
-        <div className="w-[570px] flex mx-auto flex-row-reverse justify-between content-center pt-2  ">
-          {error && <p style={{ color: 'red' }} className=' text-sm font-semibold' >{error}</p>}
-          <a onClick={handleFilter} className='underline text-sm font-medium text-blue-500'>Filtros</a>
+        <div className="w-[570px] flex mx-auto flex-col pt-2">
+          <div className="flex flex-row-reverse justify-between content-center">
+            <a onClick={handleFilter} className='underline text-sm font-medium text-blue-500'>Filtros</a>
+            {error && <p style={{ color: 'red' }} className=' text-sm font-semibold' >{error}</p>}
+          </div>
+          <div className="w-full items-center pt-2">
           {showFilter && (
-              <div className="flex flex-row justify-end items-center">
-              <input  type="checkbox" onChange={handleSort} checked={sort} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"  />
-              <label className=" text-sm font-medium text-blue-500 ">Filtros</label>
+            <div className="bg-slate-100 rounded-lg p-2">
+              <div className=" grid grid-cols-4 gap-8 h-full p-2">
+                <FilterItem onChange={handleSort} checked={sort } filter={"Precio "}/>
+                <FilterItem onChange={handleSort} checked={sort } filter={"AZ"}/>
+              </div>
+              <div className="flex flex-row-reverse text-sm font-medium text-red-700 underline">
+                <a onClick={handleFilterClose}>Cerrar filtros</a>
+              </div>  
             </div>
           )}      
+          </div>
         </div>
       </div>
       {isHeaderFixed && <hr class="h-px bg-blue-400 border-0 " />}
