@@ -15,9 +15,6 @@ function Scanner(){
                 width: 20, height: 200},
             disableFlip: true,
             rememberLastUsedCamera: true,
-            videoConstraints: {
-                facingMode: { exact: "environment" },
-            },
         });
         
         scanner.render(success, error);
