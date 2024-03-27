@@ -12,9 +12,12 @@ function Scanner(){
         scanner = new Html5QrcodeScanner('reader', {
             fps: 10,
             qrbox: {
-                width: 20, height: 200},
+                width: 200, height: 200},
             disableFlip: true,
             rememberLastUsedCamera: true,
+            videoConstraints: {
+                facingMode: { exact: "environment" },
+            },
         });
         
         scanner.render(success, error);
