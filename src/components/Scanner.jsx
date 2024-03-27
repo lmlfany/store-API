@@ -67,6 +67,7 @@
 // }
 
 // export default Scanner;
+
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
@@ -111,7 +112,16 @@ function Scanner(){
     }, []);
 
     const activateCamera = () => {
-        navigator.mediaDevices.getUserMedia({ video: true })
+        navigator.mediaDevices.enumerateDevices()
+            .then(devices => {
+                const videoDevices = devices.filter(device => device.kind === 'videoinput');
+                const rearCamera = videoDevices.find(device => device.label.includes('back') || device.label.includes('rear'));
+                if (rearCamera) {
+                    return navigator.mediaDevices.getUserMedia({ video: { deviceId: rearCamera.deviceId } });
+                } else {
+                    throw new Error('No se encontró una cámara trasera.');
+                }
+            })
             .then(stream => {
                 const video = document.getElementById('reader');
                 video.srcObject = stream;
