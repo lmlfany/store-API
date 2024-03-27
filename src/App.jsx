@@ -171,7 +171,7 @@ function App() {
           </div>
         </div>
       </div>
-      {isHeaderFixed && <hr class="h-px bg-blue-400 border-0 " />}
+      {isHeaderFixed && <hr className="h-px bg-blue-400 border-0 " />}
     </header>
     <main className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
       {loading ? <p>Cargando...</p> : <Products products={products} />}

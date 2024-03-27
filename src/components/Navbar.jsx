@@ -16,21 +16,21 @@ const Navbar = () => {
                 <img src="/logo.svg" className="h-[34px]" alt="Logo" />
               </button>
             </div>
-            <div class="inline-block h-[60px] w-[0.5px] self-stretch bg-white" />          
+            <div className="inline-block h-[60px] w-[0.5px] self-stretch bg-white" />          
             <a href="" className="flex items-center space-x-3 rtl:space-x-reverse">
               <img src="/logoLarge.svg" className="h-8" alt="Logo" />
             </a>
           </div>
           <div className="flex items-center gap-2">
-          <div class="inline-block h-[60px] w-[0.5px] self-stretch bg-black" /> 
+          <div className="inline-block h-[60px] w-[0.5px] self-stretch bg-black" /> 
             <button className="text-white ">
               <img src="/profile.svg" alt="Perfil" className="w-[36px] h-[36px]" />
             </button>
-            <div class="inline-block h-[60px] w-[0.5px] self-stretch bg-black" /> 
+            <div className="inline-block h-[60px] w-[0.5px] self-stretch bg-black" /> 
             <button className="text-white">
               <img src="/cart.svg" alt="Carrito" className="w-[37px] h-[37px]" />
             </button>
-            <div class="inline-block h-[60px] w-[0.5px] self-stretch bg-black" /> 
+            <div className="inline-block h-[60px] w-[0.5px] self-stretch bg-black" /> 
             <button className="text-white">
               <img src="/notify.svg" alt="Notificaciones" className="w-[44px] h-[44px]" />
             </button>
