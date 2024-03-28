@@ -78,6 +78,7 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
     getProducts({ search });
+    event.target.querySelector('input').blur();
   }
 
   const handleSort = () => {
@@ -148,7 +149,7 @@ function App() {
                 </Link>
               )}
             </div>
-            {/* <button type="submit" className=" bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-white dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button> */}
+            <button type="submit" className="hidden bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-white dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
           </div>
         </form>
         <div className="w-[570px] flex mx-auto flex-col pt-2">
@@ -161,7 +162,7 @@ function App() {
             <div className="bg-slate-100 rounded-lg p-2">
               <div className=" grid grid-cols-4 gap-8 h-full p-2">
                 <FilterItem onChange={handleSort} checked={sort } filter={"Precio "}/>
-                <FilterItem onChange={handleSort} checked={sort } filter={"AZ"}/>
+                {/* <FilterItem onChange={handleSort} checked={sort } filter={"AZ"}/> */}
               </div>
               <div className="flex flex-row-reverse text-sm font-medium text-red-700 underline">
                 <a onClick={handleFilterClose}>Cerrar filtros</a>

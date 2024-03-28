@@ -22,6 +22,7 @@ export function ListOfProducts ({ products }) {
                 // No hay más productos para cargar
                 setAllProductsLoaded(true);
                 setIsLoading(false);
+                setShowNoResults(true); 
                 return;
             }
 
@@ -61,7 +62,7 @@ export function ListOfProducts ({ products }) {
                     <h5 className="text-xl font-bold leading-none text-gray-900">Resultados</h5>
                 </div>
                 <div className="flow-root">
-                    <ul  className="divide-y divide-gray-200 dark:divide-gray-700">
+                    <ul  className="divide-y divide-gray-300">
                         {
                            visibleProducts.map(product => (
                                 <li key={product.id} className="py-3 sm:py-4">
@@ -89,7 +90,9 @@ export function ListOfProducts ({ products }) {
                         }
                          <li ref={endOfListRef}></li>
                     </ul>
-                    {isLoading && <p className="text-center">Cargando...</p>}
+                    {isLoading && <div className='max-w-xl w-[500px] items-center justify-between mx-auto'>
+                        <p className="text-center ">Cargando...</p>
+                    </div> }
                 </div>
             </div>
 
@@ -107,7 +110,7 @@ export function NoProductsResults (){
         </svg>
         <span className="sr-only">Info</span>
         <div>
-            <span className="font-medium">No existen resultados</span> para esta búsqueda
+            <span className="font-medium">Sin resultados, </span> haz una búsqueda
         </div>
 </div>
     )
