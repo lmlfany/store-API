@@ -75,10 +75,19 @@ function App() {
     getProducts({search});
   }, 300), [getProducts]);
 
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault(); 
+      updateSearch(event.target.value); 
+      event.target.blur(); 
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     getProducts({ search });
-    event.target.querySelector('input').blur();
+    event.target.querySelector('input').blur(); 
   }
 
   const handleSort = () => {
@@ -128,6 +137,7 @@ function App() {
               </div>
               <input 
                 style={{ border: '1px solid transparent', borderColor: error ? 'red' :'grey' }} 
+                onKeyDown={handleKeyDown}
                 onChange={handleChange} 
                 value={search}  
                 className=" block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-sm bg-gray-50 focus:ring-blue-500 focus:border-blue-500 " 
