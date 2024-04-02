@@ -31,5 +31,12 @@ export function useProducts ({search, sort, sortAZ}){
 
     }, [sort, products])
 
-    return { products: sortedProducts,  getProducts, loading }
+    // const sortedProductsAZ = useMemo(() => {
+    //     return sortAZ
+    //     ? [...products].sort((a, b) => a.title.localeCompare(b.title))
+    //     : products
+
+    // }, [sortAZ, products])
+
+    return { products: sortedProducts, getProducts, loading }
 }

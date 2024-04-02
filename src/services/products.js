@@ -19,7 +19,7 @@ export const searchProducts = async ({search}) => {
             category: product.category,
             rating: product.rating,
             image: product.thumbnail,
-    
+            
         }))
     } catch (e) {
         throw new Error('Error en la busqueda')

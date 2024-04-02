@@ -69,11 +69,11 @@ function Scanner() {
             <header>
                 <Navbar />
             </header>
-            <main className='max-w-screen-md w-full h-screen-sm items-center  mx-auto p-4'>
+            <main className="max-w-screen-md w-full h-screen-sm items-center text-[20px] mx-auto p-4">
                 <div className="flex flex-col">
                     <Link to="/" onClick={handleGoBack}>
-                        <div className="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                            <img src="/left-arrow.svg" className="h-6" alt="Logo" />
+                        <div className=" inline-flex items-center font-medium  text-blue-600 dark:text-blue-500 hover:underline">
+                            <img src="/left-arrow.svg" className="h-[35px] me-1" alt="Logo" />
                             Regresar
                         </div>
                     </Link>

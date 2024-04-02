@@ -1,7 +1,7 @@
 const Navbar = () => {
   return (
     <div >
-      <nav className="bg-white border-gray-200 dark:bg-gray-800 h-[60px]  content-center"
+      <nav rel="preload" className="bg-white border-gray-200 dark:bg-gray-800 h-[60px]  content-center"
                 style={{ 
                   backgroundImage: "url('/fondo.png')",
                   backgroundRepeat: "repeat-x",
@@ -16,7 +16,7 @@ const Navbar = () => {
                 <img src="/logo.svg" className="h-[34px]" alt="Logo" />
               </button>
             </div>
-            <div className="inline-block h-[60px] w-[0.5px] self-stretch bg-white" />          
+            <div rel="preload" className="inline-block h-[60px] w-[0.5px] self-stretch bg-white" />          
             <a href="" className="flex items-center space-x-3 rtl:space-x-reverse">
               <img src="/logoLarge.svg" className="h-8" alt="Logo" />
             </a>
